@@ -101,7 +101,7 @@ How to use: check `.agents/project-index.md` first to locate the file, then insp
 ## postgresql_db/schemas/setup_pbac_schema.py (371 lines) - setup pbac schema (schemas)
 - `setup` (def)
 
-## server.py (544 lines) - server
+## server.py (552 lines) - server
 - `_graph_background_sync_enabled` (def)
 - `_env_flag` (def)
 - `lifespan` (def)

@@ -17,7 +17,7 @@ For detailed function and route definitions, see `.agents/code-map.md`.
 - postgresql_db/schemas/setup_ai_observability_schema.py (93 lines) - AI observability, caching and usage limits: trace spans for every AI step (model calls, embeddings, tool calls, guard checks, cache looku...
 - postgresql_db/schemas/setup_graph_sync_schema.py (54 lines) - setup graph sync schema (schemas)
 - postgresql_db/schemas/setup_pbac_schema.py (371 lines) - setup pbac schema (schemas)
-- server.py (544 lines) - server
+- server.py (552 lines) - server
 - services/ai/ai_guardrails.py (249 lines) - AI guardrails: screening what goes into the model and redacting personal data from what comes out.
 - services/ai/ai_observability.py (368 lines) - AI observability: a trace span for every model call, embedding, retrieval, cache lookup, guard check and tool call, plus a prompt log of ...
 - services/ai/ai_usage_service.py (141 lines) - AI Usage Limits Caps how often Gemini runs, so one person (or a stuck loop) can't use up the provider quota or run up cost.
