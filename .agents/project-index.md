@@ -27,13 +27,13 @@ For function and route definitions with their line numbers, grep `.agents/code-m
 - services/ai/observability/ai_usage_service.py (141 lines) - AI Usage Limits Caps how often Gemini runs, so one person (or a stuck loop) can't use up the provider quota or run up cost.
 - services/microsoft_graph/graph_service.py (420 lines) - Microsoft Graph API client for employee profile sync.
 - services/microsoft_graph/graph_sync_job.py (132 lines) - Periodic Microsoft Graph sync for already-known employees.
-- services/notifications/audit_hub_publisher.py (66 lines) - Publish local audit log records to the CEO Dashboard via the RabbitMQ Message Hub.
+- services/notifications/audit_hub_publisher.py (109 lines) - Publish local audit log records to the CEO Dashboard via the RabbitMQ Message Hub.
 - services/notifications/ceo_event_publisher.py (50 lines) - Cross-application event publisher for CEO Dashboard integration.
 - services/notifications/mqtt_presence.py (273 lines) - MQTT Service Presence & Event-Driven Messaging Component for Template Mobile.
 - services/notifications/notification_service.py (178 lines) - notification service (notifications)
 - services/notifications/rabbitmq_service.py (401 lines) - RabbitMQ Service & Topology Manager for template-mobile Management.
 - services/shared/auth/auth_service.py (641 lines) - auth service (shared auth)
-- services/shared/auth/rbac_service.py (702 lines) - Utility for audit logging
+- services/shared/auth/rbac_service.py (678 lines) - Utility for audit logging (re-exported from audit_hub_publisher)
 - services/shared/auth/secret_config.py (18 lines) - Validated secret lookup from environment variables with no hardcoded fallbacks.
 - services/shared/auth/service_security_policy.py (241 lines) - Enterprise Application Security & Scope Authorization Policy Defines the strict Application-to-Application Access Matrix (Machine-to-Mach...
 - services/shared/core/audit_service.py (141 lines) - audit service (shared core)

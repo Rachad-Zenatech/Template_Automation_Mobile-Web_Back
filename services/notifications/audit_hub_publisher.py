@@ -1,10 +1,12 @@
 """Publish local audit log records to the CEO Dashboard via the RabbitMQ Message Hub."""
 
 import asyncio
+import json
 import logging
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
+from uuid import UUID
 
 logger = logging.getLogger(__name__)
 
@@ -63,3 +65,44 @@ def publish_audit_log_to_hub(
         pass
     except Exception as exc:
         logger.debug(f"Could not schedule audit log hub publish: {exc}")
+
+
+async def log_audit(
+    conn,
+    actor_id: UUID,
+    action: str,
+    entity_type: str,
+    entity_id: UUID,
+    old_value: dict = None,
+    new_value: dict = None,
+    ip: str = None,
+    ua: str = None,
+):
+    sql = """
+        INSERT INTO audit_logs (actor_user_id, action, entity_type, entity_id, old_value, new_value, ip_address, user_agent, created_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, now())
+    """
+    old_json = json.dumps(old_value, default=str) if old_value else None
+    new_json = json.dumps(new_value, default=str) if new_value else None
+    await conn.execute(sql, actor_id, action, entity_type, str(entity_id) if entity_id is not None else None, old_json, new_json, ip, ua)
+
+    actor_name, actor_email = None, None
+    if actor_id:
+        try:
+            u = await conn.fetchrow("SELECT full_name, email FROM users WHERE id = $1", actor_id)
+            if u:
+                actor_name, actor_email = u["full_name"], u["email"]
+        except Exception:
+            pass
+    publish_audit_log_to_hub(
+        action=action,
+        entity_type=entity_type,
+        entity_id=entity_id,
+        actor_user_id=actor_id,
+        actor_name=actor_name,
+        actor_email=actor_email,
+        old_value=old_value,
+        new_value=new_value,
+        ip_address=ip,
+        user_agent=ua,
+    )

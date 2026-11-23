@@ -28,34 +28,33 @@ Each symbol shows its start line (`L<n>`); read from there to the next symbol's 
 - `requireToolAccess` (def) L624
     - `dependency` (def) L625
 
-## services/shared/auth/rbac_service.py (702 lines) - Utility for audit logging
-- `log_audit` (def) L12
-- `get_audit_logs` (def) L39
-- `_public_user` (def) L76
-- `get_all_users` (def) L81
-- `get_user_by_id` (def) L121
-- `create_user` (def) L131
-- `update_user` (def) L189
-- `delete_user` (def) L254
-- `bulk_delete_users` (def) L283
-- `get_all_roles` (def) L335
-- `get_role_tree` (def) L345
-- `get_role_by_id` (def) L418
-- `create_role` (def) L422
-- `update_role` (def) L437
-- `delete_role` (def) L511
-- `get_user_roles` (def) L529
-- `set_user_roles` (def) L538
-- `get_role_navigation_permissions` (def) L558
-- `update_role_navigation_permissions` (def) L568
-- `get_role_mcp_tool_permissions` (def) L589
-- `update_role_mcp_tool_permissions` (def) L598
-- `log_login_activity` (def) L615
-- `get_login_activity_logs` (def) L624
-- `log_audit_action` (def) L636
-- `get_permission_modules` (def) L642
-- `get_role_permission_groups` (def) L680
-- `update_role_permission_groups` (def) L685
+## services/shared/auth/rbac_service.py (678 lines) - Utility for audit logging (re-exported from audit_hub_publisher)
+- `get_audit_logs` (def) L15
+- `_public_user` (def) L52
+- `get_all_users` (def) L57
+- `get_user_by_id` (def) L97
+- `create_user` (def) L107
+- `update_user` (def) L165
+- `delete_user` (def) L230
+- `bulk_delete_users` (def) L259
+- `get_all_roles` (def) L311
+- `get_role_tree` (def) L321
+- `get_role_by_id` (def) L394
+- `create_role` (def) L398
+- `update_role` (def) L413
+- `delete_role` (def) L487
+- `get_user_roles` (def) L505
+- `set_user_roles` (def) L514
+- `get_role_navigation_permissions` (def) L534
+- `update_role_navigation_permissions` (def) L544
+- `get_role_mcp_tool_permissions` (def) L565
+- `update_role_mcp_tool_permissions` (def) L574
+- `log_login_activity` (def) L591
+- `get_login_activity_logs` (def) L600
+- `log_audit_action` (def) L612
+- `get_permission_modules` (def) L618
+- `get_role_permission_groups` (def) L656
+- `update_role_permission_groups` (def) L661
 
 ## services/shared/auth/secret_config.py (18 lines) - Validated secret lookup from environment variables with no hardcoded fallbacks.
 - `require_secret` (def) L6 - Return the first configured secret meeting min_length, or raise RuntimeError.
